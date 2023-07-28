@@ -8,7 +8,7 @@ WORKDIR /
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm start
+RUN npm install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 
@@ -16,4 +16,4 @@ RUN npm start
 COPY . .
 
 EXPOSE 3000
-CMD [ "node", "indjex.js" ]
+CMD [ "node", "index.js" ]
