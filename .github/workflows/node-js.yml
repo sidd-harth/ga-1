@@ -29,3 +29,16 @@ jobs:
     - run: npm install
     #- run: npm start
     - run: npm test
+    - name: Docker Login
+      # You may pin to the exact commit or the version.
+      # uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
+      uses: docker/login-action@v2.2.0
+      with:
+        username: ${{secrets.DOCKER_HUB_USERNAME}}
+        password: ${{secrets.DOCKER_HUB_PASSWORD}}
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v4.1.1
+      with:
+        file: Dockerfile
+        push: true
+        tags: ${{secrets.DOCKER_HUB_USERNAME}}/ga-nodejs:latest
