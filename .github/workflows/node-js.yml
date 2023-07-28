@@ -40,5 +40,6 @@ jobs:
       uses: docker/build-push-action@v4.1.1
       with:
        # file: Dockerfile
+        context: .
         push: true
         tags: ${{secrets.DOCKER_HUB_USERNAME}}/ga-nodejs:latest
